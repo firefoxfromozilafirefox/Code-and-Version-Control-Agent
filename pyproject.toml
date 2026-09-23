@@ -1,0 +1,21 @@
+[project]
+name = "agent"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "openai>=1.0.0",
+    "openai-agents>=0.22.3",
+    "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+code-reviewer = "agent.main:run"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.26.0"]
+build-backend = "hatchling.build"
