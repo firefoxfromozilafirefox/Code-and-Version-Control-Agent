@@ -1,0 +1,17 @@
+def calculate_average(numbers):
+    total = 0
+    for number in numbers:
+        total += number
+    return total / len(numbers)
+
+
+def format_users(users):
+    result = []
+    for user in users:
+        result.append(user["name"].upper())
+    return ", ".join(result)
+
+
+values = []
+print(calculate_average(values))
+print(format_users([{"name": "ana"}, {}]))
