@@ -97,6 +97,5 @@ def run() -> None:
         logging.error("%s", error)
         raise SystemExit(1) from error
 
-
 if __name__ == "__main__":
     run()
