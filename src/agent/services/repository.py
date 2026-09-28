@@ -58,3 +58,6 @@ class GitRepository:
         if not message.strip():
             raise ValueError("A mensagem de commit não pode estar vazia.")
         return self._run("commit", "-m", message)
+    
+    def push(self, remote: str = "origin", branch: str = "main") -> str:
+        return self._run("push", remote, branch)
