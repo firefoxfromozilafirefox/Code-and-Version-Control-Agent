@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from openai import AsyncOpenAI
 
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-DEEPSEEK_MODEL = "deepseek-flash"
+DEEPSEEK_MODEL = "deepseek-reasoner"
 
 
 def create_deepseek_client() -> AsyncOpenAI:

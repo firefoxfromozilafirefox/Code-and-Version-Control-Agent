@@ -1,6 +1,7 @@
 """Exemplos simples de funções utilitárias com tratamento de erros."""
 
-from typing import Any, Iterable, Mapping
+from collections.abc import Iterable, Mapping
+from typing import Any
 
 
 def calculate_average(numbers: Iterable[float]) -> float:
@@ -14,6 +15,7 @@ def calculate_average(numbers: Iterable[float]) -> float:
 
     Raises:
         ValueError: Se ``numbers`` estiver vazia, pois a média seria indefinida.
+        TypeError: Se algum dos valores não for numérico.
     """
     values = list(numbers)
     if not values:
@@ -26,7 +28,8 @@ def format_users(users: Iterable[Mapping[str, Any]]) -> str:
     """Retorna os nomes dos usuários em maiúsculas, separados por vírgula.
 
     Usuários sem o campo ``"name"``, com nome ``None`` ou com nome vazio
-    (ou apenas espaços) são ignorados.
+    (ou apenas espaços) são ignorados. Itens que não forem mapeamentos
+    também são ignorados, em vez de provocar erro.
 
     Args:
         users: Coleção de mapeamentos que podem conter a chave ``"name"``.
@@ -36,6 +39,9 @@ def format_users(users: Iterable[Mapping[str, Any]]) -> str:
     """
     names: list[str] = []
     for user in users:
+        if not isinstance(user, Mapping):
+            continue
+
         raw_name = user.get("name")
         if raw_name is None:
             continue

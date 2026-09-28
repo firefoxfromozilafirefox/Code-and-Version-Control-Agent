@@ -10,6 +10,8 @@ dependencies = [
 
 [project.scripts]
 code-reviewer = "agent.main:run"
+review = "agent.main:run"
+agent-git = "agent.main:run"
 
 [dependency-groups]
 dev = [
@@ -19,3 +21,4 @@ dev = [
 [build-system]
 requires = ["hatchling>=1.26.0"]
 build-backend = "hatchling.build"
+

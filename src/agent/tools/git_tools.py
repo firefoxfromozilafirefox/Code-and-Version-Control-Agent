@@ -27,8 +27,13 @@ def create_git_tools(repository: GitRepository, allow_write: bool = False):
     def git_branches() -> str:
         """Lista as branches locais e remotas."""
         return repository.branches()
+        
+    @function_tool
+    def git_push(remote: str = "origin", branch: str = "main") -> str:
+        """Envia commits para o repositório remoto."""
+        return repository.push(remote, branch)
 
-    tools = [git_status, git_diff, git_log, git_branches]
+    tools = [git_status, git_diff, git_log, git_branches, git_push]
     if allow_write:
         @function_tool
         def git_stage(paths: list[str]) -> str:
